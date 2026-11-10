@@ -23,19 +23,45 @@
 # результат нового запуска: "Заголовок: Тест печати онлайн – развивай скорость и точность с Blind Typing"
 # код выполнен без ошибок.
 
+#ФИО: Соколов Антон Сергеевич
+#Дата: 2026-11-11
+#Время: 23:52
+#Описание: Код открывает сайт playwright.dev в браузере Chrome, выводит название в консоль и закрывает браузер
+#Я скопировал пример из раздела "начало работы - библиотека" и запустил его
+
 """Для современного проекта используется асинхронный API"""
 
-import asyncio # импорт для запуска
-from playwright.async_api import async_playwright # подключаем асинхронную версию
+#import asyncio # импорт для запуска
+#from playwright.async_api import async_playwright # подключаем асинхронную версию
 
-async def main(): # создаем функцию и говорим Python что это на подумать, загрузить, просмореть(выполнять асинхронно)
-    async with async_playwright() as p: # запуск Playwright
-        browser = await p.chromium.launch() # запуск праузера 
-        page = await browser.new_page() # открытие новой вкладки
-        await page.goto("https://playwright.dev") # переход на сайт
-        print(await page.title()) # заголовок страницы
-        await browser.close() # закрываем браузер
+#async def main(): # создаем функцию и говорим Python что это на подумать, загрузить, просмореть(выполнять асинхронно)
+    #async with async_playwright() as p: # запуск Playwright
+        #browser = await p.chromium.launch() # запуск праузера 
+        #page = await browser.new_page() # открытие новой вкладки
+        #await page.goto("https://playwright.dev") # переход на сайт
+        #print(await page.title()) # заголовок страницы
+        #await browser.close() # закрываем браузер
 
-asyncio.run(main())
+#asyncio.run(main())
 # результат запуска: "Fast and reliable end-to-end testing for modern web apps | Playwright"
+# код выполнен без ошибок
+
+#ФИО: Соколов Антон Сергеевич
+#Дата: 2026-11-11
+#Время: 23:57
+#Описание: Код открывает нужную ссылку, запускает браузер(по желанию можно указать любой), делает скрин и закрывает браузер
+#Я скопировал пример из раздела "начало работы - библиотека(Первый скрипт)" и запустил его
+
+"""Первый скрипт"""
+
+from playwright.sync_api import sync_playwright # библиотека для управление браузером
+
+with sync_playwright() as p: # Запуск Playwright.
+    browser = p.webkit.launch() # запуск браузера safari
+    page = browser.new_page() # В браузере открывается новая пустая вкладка
+    page.goto("https://playwright.dev/") # переходит по указанной ссылке
+    page.screenshot(path="example.png") # делает снимок и сохроняет в папку
+    browser.close() # закрывает браузер 
+
+# результат запуска: после запуска программы открывается браузер и идёт переход по указанной ссылке, делает скрин, сохроняет скрин в папку и закрывает браюзер
 # код выполнен без ошибок
