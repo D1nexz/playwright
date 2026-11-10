@@ -57,9 +57,9 @@
 from playwright.sync_api import sync_playwright # библиотека для управление браузером
 
 with sync_playwright() as p: # Запуск Playwright.
-    browser = p.webkit.launch() # запуск браузера safari
+    browser = p.chromium.launch() # запуск браузера chrome
     page = browser.new_page() # В браузере открывается новая пустая вкладка
-    page.goto("https://playwright.dev/") # переходит по указанной ссылке
+    page.goto("https://monkeytype.com/") # переходит по указанной ссылке
     page.screenshot(path="example.png") # делает снимок и сохроняет в папку
     browser.close() # закрывает браузер 
 
