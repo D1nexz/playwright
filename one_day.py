@@ -4,20 +4,38 @@
 #Описание: Код открывает сайт playwright.dev в браузере Chrome, выводит название в консоль и закрывает браузер
 #Я скопировал пример из раздела "начало работы - библиотека" и запустил его
 
-#установка
+"""Устанорвка"""
 
 #pip install --upgrade pip
 #pip install playwright
 #playwright install
 
-from playwright.sync_api import sync_playwright#берём(импортируем) нужный модуль 
+#from playwright.sync_api import sync_playwright#берём(импортируем) нужный модуль 
 
-with sync_playwright() as p:#подготовка к работе, запускает playwright
-    browser = p.chromium.launch() #запуск браузера
-    page = browser.new_page() #открваем страницу браузера
-    page.goto("https://blindtyping.com/ru")#переходит на сайт blindtyping
-    print(f"Заголовок: {page.title()}") # Вывод заголовка
-    browser.close() #закрываем браузер
+#with sync_playwright() as p: # подготовка к работе, запускает playwright
+    #browser = p.chromium.launch() # запуск браузера
+    #page = browser.new_page() # открваем страницу браузера
+    #page.goto("https://blindtyping.com/ru") # переходит на сайт blindtyping
+    #print(f"Заголовок: {page.title()}") # Вывод заголовка
+    #browser.close() # закрываем браузер
+# результат старого запуска: "Playwright"
 # Что модифицировал: я добавил f строку что бы переменные можно было вставлять прямо в текст, так же изменил переход на сайт
-# результат запуска: "Заголовок: Тест печати онлайн – развивай скорость и точность с Blind Typing"
+# результат нового запуска: "Заголовок: Тест печати онлайн – развивай скорость и точность с Blind Typing"
 # код выполнен без ошибок.
+
+"""Для современного проекта используется асинхронный API"""
+
+import asyncio # импорт для запуска
+from playwright.async_api import async_playwright # подключаем асинхронную версию
+
+async def main(): # создаем функцию и говорим Python что это на подумать, загрузить, просмореть(выполнять асинхронно)
+    async with async_playwright() as p: # запуск Playwright
+        browser = await p.chromium.launch() # запуск праузера 
+        page = await browser.new_page() # открытие новой вкладки
+        await page.goto("https://playwright.dev") # переход на сайт
+        print(await page.title()) # заголовок страницы
+        await browser.close() # закрываем браузер
+
+asyncio.run(main())
+# результат запуска: "Fast and reliable end-to-end testing for modern web apps | Playwright"
+# код выполнен без ошибок
