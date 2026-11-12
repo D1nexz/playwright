@@ -56,7 +56,7 @@
 
 #from playwright.sync_api import sync_playwright # библиотека для управление браузером
 
-#with sync_playwright() as p: # Запуск Playwright.
+#with sync_playwright() as p: # Запуск Playwright
     #browser = p.chromium.launch() # запуск браузера chrome
     #page = browser.new_page() # В браузере открывается новая пустая вкладка
     #page.goto("https://monkeytype.com/") # переходит по указанной ссылке
@@ -95,17 +95,28 @@
 # скрин работы example4.png 
 # код выполнен без ошибок
 
+#ФИО: Соколов Антон Сергеевич
+#Дата: 2026-11-12
+#Время: 23:27
+#Описание: Код открывает нужную ссылку, запускает браузер(по желанию можно указать любой), делает скрин и закрывает браузер
+#Я скопировал пример из раздела "начало работы - библиотека(Интерактивный режим)" и запустил его
+
 """Pyinstaller"""
 
 #С помощью Playwright и Pyinstaller можно создавать автономные исполняемые файлы.
 
-from playwright.sync_api import sync_playwright
 
-with sync_playwright() as p:
-    browser = p.chromium.launch()
-    page = browser.new_page()
-    page.goto("https://playwright.dev/")
-    page.screenshot(path="example5.png")
-    browser.close()
+from playwright.sync_api import sync_playwright # Импорт sync_playwright
 
+with sync_playwright() as p: # Запуск Playwright
+    browser = p.chromium.launch(headless=False) # Запускает Chrome в видимом окне
+    page = browser.new_page() # Открывает страницу в браузере
+    page.goto("https://case-battle.tax") # Переходит на указанный адрес
+    page.wait_for_timeout(3000) # Ждёт 3 секунды для полной прогрузки анимаций
+    page.screenshot(path="example5.png") # Делает скриншот страницы и сохраняет в файл
+    browser.close() # Закрывает браузер
+
+# результат: запуск Chrome, делает скриншот страницы и сохраняет в файл
+# что модифицировал: я добавил параметр headless=False который даёт коду открывать реальное окно и делать скрин, так же изменил переход ссылку на сайт
+# код выполнен без ошибок 
 
