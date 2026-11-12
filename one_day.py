@@ -6,8 +6,8 @@
 
 """Устанорвка"""
 
-#pip install --upgrade pip
-#pip install playwright
+#uv self update
+#uv add playwright
 #playwright install
 
 #from playwright.sync_api import sync_playwright#берём(импортируем) нужный модуль 
@@ -86,8 +86,8 @@ playwright = sync_playwright().start()
 # Pass headless=False to launch() to see the browser UI
 browser = playwright.chromium.launch()
 page = browser.new_page()
-page.goto("https://playwright.dev/")
-page.screenshot(path="example.png")
+page.goto("https://metanit.com/")
+page.screenshot(path="example3.png")
 browser.close()
 playwright.stop()
 
