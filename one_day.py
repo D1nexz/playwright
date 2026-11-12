@@ -6,8 +6,8 @@
 
 """Устанорвка"""
 
-#pip install --upgrade pip
-#pip install playwright
+#uv self update
+#uv add playwright
 #playwright install
 
 #from playwright.sync_api import sync_playwright#берём(импортируем) нужный модуль 
@@ -84,6 +84,7 @@ from playwright.sync_api import sync_playwright # Импорт sync_playwright
 playwright = sync_playwright().start() # Запускает Playwright
 # Use playwright.chromium, playwright.firefox or playwright.webkit
 # Pass headless=False to launch() to see the browser UI
+<<<<<<< HEAD
 browser = playwright.chromium.launch() # Запускает Chrome
 page = browser.new_page() # Открывает страницу в браузере
 page.goto("https://www.freecodecamp.org/learn") # Переходит на указанный адрес
