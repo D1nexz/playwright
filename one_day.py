@@ -80,14 +80,19 @@
 #запускаем интерактивную REPL-среду Python в терминале
    #python
 
-from playwright.sync_api import sync_playwright
-playwright = sync_playwright().start()
+from playwright.sync_api import sync_playwright # Импорт sync_playwright
+playwright = sync_playwright().start() # Запускает Playwright
 # Use playwright.chromium, playwright.firefox or playwright.webkit
 # Pass headless=False to launch() to see the browser UI
-browser = playwright.chromium.launch()
-page = browser.new_page()
-page.goto("https://playwright.dev/")
-page.screenshot(path="example.png")
-browser.close()
-playwright.stop()
+browser = playwright.chromium.launch() # Запускает Chrome
+page = browser.new_page() # Открывает страницу в браузере
+page.goto("https://www.freecodecamp.org/learn") # Переходит на указанный адрес
+page.screenshot(path="example4.png") # Делает скриншот страницы и сохраняет в файл
+browser.close() # Закрывает браузер
+playwright.stop() # Останавливает Playwright
+
+# я поработал в интерактивном REPl Python
+# скрин работы example4.png 
+# код выполнен без ошибок
+
 
