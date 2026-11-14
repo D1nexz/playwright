@@ -99,24 +99,47 @@
 #Дата: 2026-11-12
 #Время: 23:27
 #Описание: Код открывает нужную ссылку, запускает браузер(по желанию можно указать любой), делает скрин и закрывает браузер
-#Я скопировал пример из раздела "начало работы - библиотека(Интерактивный режим)" и запустил его
+#Я скопировал пример из раздела "начало работы - библиотека(Pyinstaller)" и запустил его
 
 """Pyinstaller"""
 
 #С помощью Playwright и Pyinstaller можно создавать автономные исполняемые файлы.
 
 
-from playwright.sync_api import sync_playwright # Импорт sync_playwright
+#from playwright.sync_api import sync_playwright # Импорт sync_playwright
 
-with sync_playwright() as p: # Запуск Playwright
-    browser = p.chromium.launch(headless=False) # Запускает Chrome в видимом окне
-    page = browser.new_page() # Открывает страницу в браузере
-    page.goto("https://case-battle.tax") # Переходит на указанный адрес
-    page.wait_for_timeout(3000) # Ждёт 3 секунды для полной прогрузки анимаций
-    page.screenshot(path="example5.png") # Делает скриншот страницы и сохраняет в файл
-    browser.close() # Закрывает браузер
+#with sync_playwright() as p: # Запуск Playwright
+    #browser = p.chromium.launch(headless=False) # Запускает Chrome в видимом окне
+    #page = browser.new_page() # Открывает страницу в браузере
+    #page.goto("https://case-battle.tax") # Переходит на указанный адрес
+    #page.wait_for_timeout(3000) # Ждёт 3 секунды для полной прогрузки анимаций
+    #page.screenshot(path="example5.png") # Делает скриншот страницы и сохраняет в файл
+    #browser.close() # Закрывает браузер
 
 # результат: запуск Chrome, делает скриншот страницы и сохраняет в файл
 # что модифицировал: я добавил параметр headless=False который даёт коду открывать реальное окно и делать скрин, так же изменил переход ссылку на сайт
 # код выполнен без ошибок 
 
+
+""" WebMCP"""
+#ФИО: Соколов Антон Сергеевич
+#Дата: 2026-11-13
+#Время: 00:26
+#Описание: Код открывает нужную ссылку, запускает браузер(по желанию можно указать любой), делает скрин и закрывает браузер
+#Я скопировал пример из раздела "#ФИО: Соколов Антон Сергеевич
+#Дата: 2026-11-12
+#Время: 23:27
+#Описание: Код открывает нужную ссылку, запускает браузер(по желанию можно указать любой), делает скрин и закрывает браузер
+#Я скопировал пример из раздела "WebMCP" и запустил его
+
+browser = chromium.launch(args=["--enable-features=WebMCP"]) # запуск браузера
+page = browser.new_page() # создание вкладки
+page.goto("https://labex.io/ru/learn/git") # переход на сайт
+
+for tool in page.webmcp.tools():
+    print(tool["name"], tool["description"]) # выводит список доступных функций
+
+result = page.webmcp.call_tool("add", {"a": 2, "b": 40}) # отправляет запрос странице
+print(result["content"][0]["text"])  # "42" # вывод
+
+# Результат: код будет выполнен с ошибкой так как сф
