@@ -125,21 +125,35 @@
 #ФИО: Соколов Антон Сергеевич
 #Дата: 2026-11-13
 #Время: 00:26
-#Описание: Код открывает нужную ссылку, запускает браузер(по желанию можно указать любой), делает скрин и закрывает браузер
-#Я скопировал пример из раздела "#ФИО: Соколов Антон Сергеевич
-#Дата: 2026-11-12
-#Время: 23:27
-#Описание: Код открывает нужную ссылку, запускает браузер(по желанию можно указать любой), делает скрин и закрывает браузер
 #Я скопировал пример из раздела "WebMCP" и запустил его
 
-browser = chromium.launch(args=["--enable-features=WebMCP"]) # запуск браузера
-page = browser.new_page() # создание вкладки
-page.goto("https://labex.io/ru/learn/git") # переход на сайт
+#browser = chromium.launch(args=["--enable-features=WebMCP"]) # запуск браузера
+#page = browser.new_page() # создание вкладки
+#page.goto("https://example.com") # переход на сайт
 
-for tool in page.webmcp.tools():
-    print(tool["name"], tool["description"]) # выводит список доступных функций
+#for tool in page.webmcp.tools():
+    #print(tool["name"], tool["description"]) # выводит список доступных функций
 
-result = page.webmcp.call_tool("add", {"a": 2, "b": 40}) # отправляет запрос странице
-print(result["content"][0]["text"])  # "42" # вывод
+#result = page.webmcp.call_tool("add", {"a": 2, "b": 40}) # отправляет запрос странице
+#print(result["content"][0]["text"])  # "42" # вывод
 
-# Результат: код будет выполнен с ошибкой так как сф
+# Результат: код будет выполнен с ошибкой так как сайт example.com не поддерживает WebMCP
+# код будет выполнен с ошибкой
+
+"""Лудшие видео"""
+#ФИО: Соколов Антон Сергеевич
+#Дата: 2026-11-13
+#Время: 00:26
+#Я скопировал пример из раздела "WebMCP" и запустил его
+
+#page.screencast.start(path="video.webm", size={"width": 1920, "height": 1080}, fps=60) # заупск записи экрана
+#page.screencast.show_actions( # Включение визуализации
+    #style={ # натройка словарей
+        #"point": "width: 20px; height: 20px; border-radius: 50%; background: red",
+        #"highlight": "outline: 2px solid #333; background: rgba(0, 128, 255, .15)",
+        #"title": "font-size: 16px",
+    #}
+#)
+
+# результат: при запуске кода начнётся запись экрана
+# код выполнен без ошибок
